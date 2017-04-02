@@ -1,0 +1,254 @@
+
+@media handheld, only screen and (max-width: 1024px) {
+/* Styles */  
+header .nav > li > a {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	font-weight: 400;
+}
+.featured-merchants .list-inline > li {
+	display: inline-block;
+	width: 31.7%;
+}
+.col-md-3.col-sm-5.text-center.chext img {
+	max-width: 100%;
+	margin-top: 10px;
+}
+}
+
+@media handheld, only screen and (max-width: 768px) {
+/* Styles */
+.codeBox {
+	margin-left: 250px;
+}
+.owl-carousel .owl-controls .owl-nav .owl-next {
+	right: 0 !important;
+	top: 20% !important;
+}
+.owl-carousel .owl-controls .owl-nav .owl-prev {
+	top: 20% !important;
+}
+.styleimg {
+	float: none;
+	padding: 0 15px;
+}
+.styleimg img {
+	object-fit: scale-down;
+	width: 100%;
+	height: 50px;
+}
+header .nav>li>a {
+	padding: 10px;
+}
+.populartag a {
+	font-size: 11px;
+}
+.ofrpctg {
+	float: left;
+	margin: 0 15px 0 0;
+	padding: 0;
+	width: 95px;
+	box-sizing: border-box;
+}
+.nw-offrtxt {
+	width: 70%;
+	float: left;
+	margin-right: 0px;
+}
+.offr-lnks {
+	float: right;
+	width: 75%0px;
+}
+.offr-lnks label {
+	font-weight: 400;
+	display: inline;
+}
+.featured-merchants .list-inline > li {
+	display: inline-block;
+	width: 32%;
+}
+.featured-merchants h3 {
+	font-size: 17px;
+}
+.featured-merchants em {
+	font-style: normal;
+	margin-bottom: 4px;
+	display: block;
+	font-size: 75%;
+}
+.col-md-4.col-sm-12.text-center.fs {
+	margin-top: 15px;
+}
+}
+
+@media handheld, only screen and (max-width: 640px) {
+/* Styles */
+.get {
+	position: absolute;
+	right: 10px;
+	top: 1040px;
+	width: 30px;
+	font-size: 20px;
+	word-wrap: break-word;
+}
+.chext {
+	margin-top: 15px;
+}
+.col-md-4.col-sm-12.text-center.fs {
+	margin-top: 0px;
+}
+.top-bar {
+	text-align: center;
+}
+.codeBox {
+	margin-left: 198px;
+}
+.storeWrap h2 {
+	margin-top: 25px;
+	font-weight: 400;
+	font-size: 24px;
+}
+.storeWrap h2 {
+	margin-top: 25px;
+	font-weight: 400;
+	font-size: 24px;
+}
+.ofrpctg {
+	float: left;
+	margin: 0 10px 0 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+.nw-offrtxt {
+	width: 100%;
+	float: left;
+	margin-right: 20px;
+}
+.offr-lnks {
+	float: left;
+	width: 180px;
+}
+.nwcid-btn {
+	margin: 4px 0 0 0;
+}
+.grdcpnsmllnks {
+	margin: 0;
+}
+.editorWrap .col-md-7 img {
+	object-fit: contain;
+	width: 100%;
+}
+.logo {
+	margin: 15px 0;
+	text-align: center;
+}
+}
+
+@media handheld, only screen and (max-width: 500px) {
+/* Styles */
+.chext {
+	margin-top: 0;
+}
+.centerB {
+	text-align: center;
+}
+.footer-above .btn-social {
+	display: inline-block;
+	width: 32px !important;
+	height: 32px;
+	border: 2px solid #fff;
+	border-radius: 100% !important;
+	text-align: center;
+	font-size: 14px;
+	line-height: 32px;
+}
+.btn-fb {
+	color: #fff;
+	background-color: #3b5998;
+	width: 48%;
+	float: left;
+	margin-bottom: 15px;
+	margin-left: 0;
+}
+.btn-gp {
+	color: #fff;
+	background-color: #d34836;
+	width: 48%;
+	margin-left: 10px;
+	float: left;
+	margin-bottom: 15px;
+}
+.fs .btn-social {
+	width: 32px !important;
+	height: 32px;
+	font-size: 16px;
+	line-height: 32px;
+	margin: 15px 0;
+}
+}
+
+@media only screen and (max-width : 480px) {
+/* Styles */
+.codeBox {
+	margin-left: 125px;
+}
+.editorWrap .col-md-7 img {
+	object-fit: contain;
+	width: 100%;
+}
+.recent-offers-ctr {
+	display: inline-block;
+	width: 100%;
+}
+.subWrap .btn-group-lg > .btn, .btn-lg {
+	padding: 15px 20px;
+	font-size: 20px;
+	margin-left: 0;
+}
+.subWrap button.btn {
+	width: 38%;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: 0px;
+	font-size: 18px;
+	padding: 16px 20px;
+}
+.owl-carousel .owl-controls .owl-nav .owl-next {
+	right: 0 !important;
+	top: 22% !important;
+}
+.owl-carousel .owl-controls .owl-nav .owl-prev {
+	top: 22% !important;
+}
+.ac-prom li {
+	width: 50%;
+	font-size: 16px;
+	padding: 0 5px;
+	vertical-align: top;
+}
+}
+
+@media only screen and (max-width : 360px) {
+/* Styles */
+.editorWrap .col-md-7 img {
+	object-fit: contain;
+	width: 100%;
+}
+.codeBox {
+	margin-left: 70px;
+}
+}
+
+@media only screen and (max-width : 320px) {
+/* Styles */
+
+.editorWrap .col-md-7 img {
+	object-fit: contain;
+	width: 100%;
+	height: 170px;
+}
+.codeBox {
+	margin-left: 50px;
+}
+}

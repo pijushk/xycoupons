@@ -1,0 +1,29 @@
+.owl-theme .owl-controls {
+	margin-top: 0px;
+	text-align: center;
+	-webkit-tap-highlight-color: transparent
+}
+.owl-theme .owl-dots .owl-dot {
+	display: inline-block;
+	zoom: 1;
+}
+.owl-theme .owl-dots .owl-dot span {
+	width: 20px;
+	height: 4px;
+	margin: 0px 3px 0;
+	background: #666;
+	display: block;
+	-webkit-backface-visibility: visible;
+	-webkit-transition: opacity 200ms ease;
+	-moz-transition: opacity 200ms ease;
+	-ms-transition: opacity 200ms ease;
+	-o-transition: opacity 200ms ease;
+	transition: opacity 200ms ease;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	position: relative;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+	background: #ff7f27;
+}
