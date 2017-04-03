@@ -1,16 +1,16 @@
 //JS of dropdown
-$(document).ready(function () {
-    $(".dropdown").hover(
-        function () {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("fast");
-            $(this).toggleClass('open');
-        },
-        function () {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("fast");
-            $(this).toggleClass('open');
-        }
-    );
-});
+/*$(document).ready(function () {
+ $(".dropdown").hover(
+ function () {
+ $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("fast");
+ $(this).toggleClass('open');
+ },
+ function () {
+ $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("fast");
+ $(this).toggleClass('open');
+ }
+ );
+ });*/
 
 // JS of Sticky
 var sticky = new Waypoint.Sticky({
@@ -73,18 +73,18 @@ $(document).ready(function ($) {
     $('body').scrollToTop({skin: 'cycle'});
 });
 //JS of dropdown
-$(document).ready(function () {
-    $(".dropdown").hover(
-        function () {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("fast");
-            $(this).toggleClass('open');
-        },
-        function () {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("fast");
-            $(this).toggleClass('open');
-        }
-    );
-});
+/*$(document).ready(function () {
+ $(".dropdown").hover(
+ function () {
+ $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("fast");
+ $(this).toggleClass('open');
+ },
+ function () {
+ $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("fast");
+ $(this).toggleClass('open');
+ }
+ );
+ });*/
 
 // JS of Sticky
 var sticky = new Waypoint.Sticky({
@@ -152,9 +152,33 @@ $(document).on("click", "#readmore", function () {
     $("#showmore").toggle();
 });
 
-$('.dynamic_text').readmore({
-    speed: 75,
-    collapsedHeight: 40,
-    moreLink: '<a href="#">more</a>',
-    lessLink: '<a href="#">less</a>'
+/*$('.dynamic_text').readmore({
+ speed: 75,
+ collapsedHeight: 40,
+ moreLink: '<a href="#">more</a>',
+ lessLink: '<a href="#">less</a>'
+ });*/
+$('body').on('click', '.register-btn', function (e) {
+    e.preventDefault();
+    var a = $(this).data('type');
+    if (a === 1) {
+        $('#registerModal').modal('show');
+    } else {
+        $('#loginModal').modal('show');
+    }
+});
+$('body').on('click', '.register-user-btn', function (e) {
+    e.preventDefault();
+    var form = $('#register-form');
+    $.ajax({
+        url: 'register',
+        method: 'POST',
+        data:form.serialize(),
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (data, error) {
+            console.log(data);
+        }
+    });
 });

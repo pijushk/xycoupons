@@ -143,7 +143,7 @@
                             </div>
                         @endforeach
                     </div>
-            @endif
+                @endif
             <!-- // great-deals   -->
             </div>
         </div>

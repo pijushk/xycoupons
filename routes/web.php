@@ -16,3 +16,5 @@ Route::get('/store/{slug}', 'StoreController@index');
 Route::get('/category/{slug}', 'CategoryController@index');
 Route::get('/stores/{term?}', 'StoreController@allStore');
 Route::get('/categories/{term?}', 'CategoryController@allCategories');
+
+Route::auth();
