@@ -6,7 +6,7 @@
  * Time: PM 11:44
  */
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,6 +19,7 @@
     <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/meanmenu.min.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/css/scrollToTop.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-dialog.min.css')}}">
     <link href="{{asset('assets/plugins/owl/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/owl/owl.theme.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
@@ -54,21 +55,34 @@
             </div>
         </div>
         <div class="col-md-2 col-sm-3">
-            @if(\Illuminate\Support\Facades\Auth::guest())
+            @if(Auth::guest())
                 <div class="dropdown">
                     <a class="btn btn-block btn-info dropdown-toggle" type="button" id="dropdownMenu"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         LOGIN / SIGNUP
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu" role="menu">
-                        <li><a href="javascript:void(0)" class="login-btn" data-type="2"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                        <li><a href="javascript:void(0)" class="register-btn" data-type="1"><i class="fa fa-angle-double-right"></i> Register</a></li>
+                        <li><a href="javascript:void(0)" class="lr-btn" data-type="2"><i
+                                        class="fa fa-angle-double-right"></i> Login</a></li>
+                        <li><a href="javascript:void(0)" class="lr-btn" data-type="1"><i
+                                        class="fa fa-angle-double-right"></i> Register</a></li>
                     </ul>
                 </div>
             @else
-                <a href="#" class="btn btn-block btn-info"><i class="fa fa-sign-in"></i> User
-                </a>
+                <div class="dropdown">
+                    <a class="btn btn-block btn-info dropdown-toggle" type="button" id="dropdownMenu"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{ Auth::user()->user_nicename }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu" role="menu">
+                        <li><a href="{{ url('dashboard') }}" class="logout-btn"><i
+                                        class="fa fa-angle-double-right"></i> Dashboard</a></li>
+                        <li><a href="{{ url('logout') }}" class="logout-btn"><i
+                                        class="fa fa-angle-double-right"></i> Logout</a></li>
+                    </ul>
+                </div>
             @endif
         </div>
     </div>
@@ -228,74 +242,134 @@
     </div>
 </footer>
 <!-- Footer END  -->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content popWrap">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><div
-                                class="cross"><a href="#"><i class="fa fa-times"></i></a></div></span></button>
-                <h4 class="modal-title" id="registerModalLabel">Signup For Free And Get Rs. 30 Cash Bonus</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-xs-12 col-md-8 col-md-offset-2">
-                    <form method="post" action="{{ url('/register') }}" id="register-form">
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                {{ csrf_field() }}
-                                <input type="text" class="form-control" name="user_nicename" id=""
-                                       placeholder="Enter User Name">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="user_email" id="" placeholder="Enter Email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="mobile" id="" placeholder="Enter Mobile No">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <input type="password" class="form-control" name="user_pass" id="" placeholder="Enter Password">
-                            </div>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" checked="">
-                                Update me on free coupons and savings</label>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-block login-button text-uppercase register-user-btn"
-                                    style="margin-bottom:4px;">Sign Up
-                            </button>
-                        </div>
-                    </form>
+@if(Auth::guest())
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content popWrap">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true"><div
+                                    class="cross"><a href="#"><i class="fa fa-times"></i></a></div></span></button>
+                    <h4 class="modal-title" id="registerModalLabel">Signup For Free And Get Rs. 30 Cash Bonus</h4>
                 </div>
-                <div class="clearfix"></div>
-                <div class="center-block text-center">
-                    <h5>Use Facebook or Google account to connect with Us</h5>
-                    <div class="social-buttons"><a href="#" class="btn btn-sm btn-fb"><i class="fa fa-facebook"></i>
-                            Facebook</a> <a
-                                href="#" class="btn btn-sm btn-gp"><i class="fa fa-google-plus"></i> Google Plus</a>
+                <div class="modal-body">
+                    <div class="col-xs-12 col-md-12">
+                        <form method="post" action="{{ url('/register') }}" id="register-form">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    {{ csrf_field() }}
+                                    <input type="text" class="form-control" name="user_nicename" id=""
+                                           placeholder="Enter User Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="user_email" id=""
+                                           placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="mobile" id=""
+                                           placeholder="Enter Mobile No">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <input type="password" class="form-control" name="password" id=""
+                                           placeholder="Enter Password">
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" checked="">
+                                    Update me on free coupons and savings</label>
+                            </div>
+                            <div class="form-group">
+                                <button type="button"
+                                        class="btn btn-primary btn-block login-button text-uppercase register-user-btn"
+                                        style="margin-bottom:4px;">Sign Up
+                                </button>
+                            </div>
+                        </form>
                     </div>
+                    <div class="clearfix"></div>
+                    <div class="center-block text-center">
+                        <h5>Use Facebook or Google account to connect with Us</h5>
+                        <div class="social-buttons"><a href="#" class="btn btn-sm btn-fb"><i class="fa fa-facebook"></i>
+                                Facebook</a> <a
+                                    href="#" class="btn btn-sm btn-gp"><i class="fa fa-google-plus"></i> Google Plus</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="center-block text-center"><a href="#" class="btn btn-default btn-block">Already have an
+                            account? Login
+                            Now</a></div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="center-block text-center"><a href="#" class="btn btn-default btn-block">Already have an
-                        account? Login
-                        Now</a></div>
-            </div>
-            <div class="modal-footer">
-                <div class="popFooter">
-                    <h5> By joining, you agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy
-                            Policy</a></h5>
+                <div class="modal-footer">
+                    <div class="popFooter">
+                        <h5> By joining, you agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy
+                                Policy</a></h5>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content popWrap">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true"><div
+                                    class="cross"><a href="#"><i class="fa fa-times"></i></a></div></span></button>
+                    <h4 class="modal-title" id="loginModalLabel">The Place Where You Get Best Coupons & Deals</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 col-md-12">
+                        <form method="post" action="{{ url('/login') }}" id="login-form">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    {{ csrf_field() }}
+                                    <input type="text" class="form-control" name="user_email" id=""
+                                           placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <input type="password" class="form-control" name="password" id=""
+                                           placeholder="Enter Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary btn-block login-button text-uppercase login-user-button"
+                                        style="margin-bottom:4px;">Sign In Now
+                                </button>
+                                <a href="#">Forgot Your Password?</a></div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="center-block text-center">
+                        <h5>Use Facebook or Google account to connect with Us</h5>
+                        <div class="social-buttons"><a href="#" class="btn btn-sm btn-fb"><i class="fa fa-facebook"></i>
+                                Facebook</a> <a href="#" class="btn btn-sm btn-gp"><i class="fa fa-google-plus"></i>
+                                Google
+                                Plus</a></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="center-block text-center"><a href="#" class="btn btn-default btn-block">Don't Have an
+                            Account? SIGN UP TODAY!</a></div>
+                </div>
+                <div class="modal-footer">
+                    <div class="popFooter">
+                        <h5> By joining, you agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy
+                                Policy</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 <a href="#" class="scrollToTop scrollToTop_cycle scrollToTop_show"></a>
 <!-- *** SCRIPTS TO INCLUDE *** -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -311,6 +385,7 @@
 <script src="{{asset('assets/plugins/waypoints/jquery.waypoints.min.js')}}"></script>
 <script src="{{asset('assets/plugins/waypoints/sticky.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery-scrollToTop.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap-dialog.min.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
 </html>

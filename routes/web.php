@@ -18,3 +18,9 @@ Route::get('/stores/{term?}', 'StoreController@allStore');
 Route::get('/categories/{term?}', 'CategoryController@allCategories');
 
 Route::auth();
+Route::get('/logout', function (){
+    Auth::logout();
+    return redirect('/');
+});
+
+Route::get('/dashboard', 'DashboardController@index');

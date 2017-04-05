@@ -158,7 +158,7 @@ $(document).on("click", "#readmore", function () {
  moreLink: '<a href="#">more</a>',
  lessLink: '<a href="#">less</a>'
  });*/
-$('body').on('click', '.register-btn', function (e) {
+$('body').on('click', '.lr-btn', function (e) {
     e.preventDefault();
     var a = $(this).data('type');
     if (a === 1) {
@@ -173,12 +173,66 @@ $('body').on('click', '.register-user-btn', function (e) {
     $.ajax({
         url: 'register',
         method: 'POST',
-        data:form.serialize(),
-        success:function (data) {
+        data: form.serialize(),
+        success: function (data) {
             console.log(data);
+            var successMessage = '';
+            $.each(data, function (key, value) {
+                successMessage += value + '<br/>';
+            });
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_SUCCESS,
+                title: 'Success',
+                message: successMessage,
+            });
         },
-        error:function (data, error) {
-            console.log(data);
+        error: function (data, error) {
+            //console.log(data);
+            var errors = $.parseJSON(data.responseText);
+            var errorList = '';
+            $.each(errors, function (key, value) {
+                errorList += value + '<br/>';
+            });
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_DANGER,
+                title: 'Error',
+                message: errorList,
+            });
+        }
+    });
+});
+
+$('body').on('click', '.login-user-button', function (e) {
+    e.preventDefault();
+    var form = $('#login-form');
+    $.ajax({
+        url: 'login',
+        method: 'POST',
+        data: form.serialize(),
+        success: function (data) {
+            var successMessage = '';
+            $.each(data, function (key, value) {
+                successMessage += value + '<br/>';
+            });
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_SUCCESS,
+                title: 'Success',
+                message: successMessage,
+            });
+            window.location.reload();
+        },
+        error: function (data, error) {
+            //console.log(data);
+            var errors = $.parseJSON(data.responseText);
+            var errorList = '';
+            $.each(errors, function (key, value) {
+                errorList += value + '<br/>';
+            });
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_DANGER,
+                title: 'Error',
+                message: errorList,
+            });
         }
     });
 });

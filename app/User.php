@@ -31,7 +31,7 @@ class User extends Authenticatable
     protected $fillable = [
         'user_nicename',
         'user_email',
-        'user_pass',
+        'password',
         'group_id',
         'user_login',
         'mobile',
@@ -44,7 +44,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'user_pass', 'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -97,9 +97,7 @@ class User extends Authenticatable
      */
     public function setPasswordAttribute($pass)
     {
-
-        $this->attributes['user_pass'] = Hash::make($pass);
-
+        $this->attributes['password'] = bcrypt($pass);
     }
 
     public function getUserIP()
