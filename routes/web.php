@@ -24,3 +24,4 @@ Route::get('/logout', function (){
 });
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/clicks', 'DashboardController@clicks');

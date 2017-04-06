@@ -18,4 +18,12 @@ class Store extends Model
     public function coupon(){
         return $this->hasMany('App\Coupon', 'merchant', 'ID');
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function order(){
+        return $this->hasMany('App\Order', 'merchant', 'ID');
+    }
 }

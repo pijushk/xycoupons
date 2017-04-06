@@ -176,4 +176,13 @@ class User extends Authenticatable
             return true;
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function order()
+    {
+        return $this->hasMany('App\Order', 'user_id', 'ID');
+    }
+
 }

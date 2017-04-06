@@ -44,8 +44,8 @@
 
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active">
-                    <a href="dashboard.html">
+                <li {{ (Request::is('dashboard') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard') }}">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
@@ -56,10 +56,10 @@
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li>
-                    <a href="table.html">
-                        <i class="material-icons">content_paste</i>
-                        <p>Table List</p>
+                <li {{ (Request::is('dashboard/clicks') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard/clicks') }}">
+                        <i class="material-icons">history</i>
+                        <p>My Click History</p>
                     </a>
                 </li>
                 <li>
