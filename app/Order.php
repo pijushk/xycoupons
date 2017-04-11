@@ -30,4 +30,8 @@ class Order extends Model
     public function scopeClicks($query){
         return $query->where('order_type', '=', 'DONT');
     }
+
+    public function scopeOrders($query){
+        return $query->where('order_type', '=', 'ORDER');
+    }
 }

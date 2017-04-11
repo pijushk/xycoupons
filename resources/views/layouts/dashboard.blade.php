@@ -50,10 +50,10 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="user.html">
+                <li {{ (Request::is('dashboard/profile') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard/profile') }}">
                         <i class="material-icons">person</i>
-                        <p>User Profile</p>
+                        <p>Profile</p>
                     </a>
                 </li>
                 <li {{ (Request::is('dashboard/clicks') ? 'class=active' : '') }}>
@@ -62,22 +62,16 @@
                         <p>My Click History</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="material-icons">library_books</i>
-                        <p>Typography</p>
+                <li {{ (Request::is('dashboard/orders') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard/orders') }}">
+                        <i class="material-icons">shopping_cart</i>
+                        <p>My Orders</p>
                     </a>
                 </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="material-icons">bubble_chart</i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="material-icons">location_on</i>
-                        <p>Maps</p>
+                <li {{ (Request::is('dashboard/transactions') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard/transactions') }}">
+                        <i class="material-icons">chrome_reader_mode</i>
+                        <p>My Transactions</p>
                     </a>
                 </li>
                 <li>

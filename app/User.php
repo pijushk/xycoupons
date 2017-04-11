@@ -185,4 +185,21 @@ class User extends Authenticatable
         return $this->hasMany('App\Order', 'user_id', 'ID');
     }
 
+    /**
+     * A user can have multiple transactions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function accounthistory()
+    {
+        return $this->hasMany('App\AccountHistory', 'user_id', 'ID');
+    }
+
+    /**
+     * A user can have only one usermeta
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function usermeta(){
+        return $this->hasOne('App\Usermeta', 'user_id', 'ID');
+    }
+
 }

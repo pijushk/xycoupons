@@ -25,3 +25,7 @@ Route::get('/logout', function (){
 
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/clicks', 'DashboardController@clicks');
+Route::get('/dashboard/orders', 'DashboardController@orders');
+Route::get('/dashboard/transactions', 'DashboardController@transactions');
+Route::get('/dashboard/profile', 'DashboardController@user');
+Route::post('/dashboard/save', 'DashboardController@saveUser');
