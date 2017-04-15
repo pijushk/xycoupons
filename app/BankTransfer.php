@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AccountHistory extends Model
+class BankTransfer extends Model
 {
     //
-    protected $primaryKey = 'ID';
-    protected $table = "ca_account_history";
+    protected $primaryKey = 'id';
+    protected $table = "bank_transfer";
 
     public $timestamps = false;
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

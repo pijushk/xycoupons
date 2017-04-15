@@ -202,4 +202,19 @@ class User extends Authenticatable
         return $this->hasOne('App\Usermeta', 'user_id', 'ID');
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function supportticket(){
+        return $this->hasMany('App\SupportTicket', 'user_id', 'ID');
+    }
+
+    public function giftvoucherhistory(){
+        return $this->hasMany('App\GiftVoucherHistory', 'user_id', 'ID');
+    }
+
+    public function banktransfer(){
+        return $this->hasMany('App\bankTransfer', 'user_id', 'ID');
+    }
 }

@@ -74,10 +74,16 @@
                         <p>My Transactions</p>
                     </a>
                 </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="material-icons text-gray">notifications</i>
-                        <p>Notifications</p>
+                <li {{ (Request::is('dashboard/tickets') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard/tickets') }}">
+                        <i class="material-icons">book</i>
+                        <p>Tickets</p>
+                    </a>
+                </li>
+                <li {{ (Request::is('dashboard/redeem') ? 'class=active' : '') }}>
+                    <a href="{{ url('dashboard/redeem') }}">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <p>Redeem Cashback</p>
                     </a>
                 </li>
                 <li class="active-pro">

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\SupportIssue;
+use App\SupportTicket;
 use App\Usermeta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 
 class DashboardController extends Controller
@@ -36,7 +40,7 @@ class DashboardController extends Controller
                 $clicks[] = array(
                     'orderID' => $s->order_id,
                     'orderDate' => $s->oder_date,
-                    'orderMerchantLogo' => $this->getImageUrl($s->store->merchant_logo, 'full')
+                    'orderMerchantLogo' => $this->getattachmentUrl($s->store->merchant_logo, 'full')
                 );
             }
             return $clicks;
@@ -67,7 +71,7 @@ class DashboardController extends Controller
                         $orders['pending'][] = array(
                             'orderID' => $s->order_id,
                             'orderDate' => $s->oder_date,
-                            'orderMerchantLogo' => $this->getImageUrl($s->store->merchant_logo, 'full'),
+                            'orderMerchantLogo' => $this->getattachmentUrl($s->store->merchant_logo, 'full'),
                             'orderAmount' => $s->order_amount,
                             'orderCommission' => $s->order_commission,
                             'orderApprovalDate' => $s->order_approval_date
@@ -77,7 +81,7 @@ class DashboardController extends Controller
                         $orders['approved'][] = array(
                             'orderID' => $s->order_id,
                             'orderDate' => $s->oder_date,
-                            'orderMerchantLogo' => $this->getImageUrl($s->store->merchant_logo, 'full'),
+                            'orderMerchantLogo' => $this->getattachmentUrl($s->store->merchant_logo, 'full'),
                             'orderAmount' => $s->order_amount,
                             'orderCommission' => $s->order_commission,
                             'orderApprovalDate' => $s->order_approval_date
@@ -87,7 +91,7 @@ class DashboardController extends Controller
                         $orders['cancelled'][] = array(
                             'orderID' => $s->order_id,
                             'orderDate' => $s->oder_date,
-                            'orderMerchantLogo' => $this->getImageUrl($s->store->merchant_logo, 'full'),
+                            'orderMerchantLogo' => $this->getattachmentUrl($s->store->merchant_logo, 'full'),
                             'orderAmount' => $s->order_amount,
                             'orderCommission' => $s->order_commission,
                             'orderApprovalDate' => $s->order_approval_date
@@ -97,7 +101,7 @@ class DashboardController extends Controller
                         $orders['disapproved'][] = array(
                             'orderID' => $s->order_id,
                             'orderDate' => $s->oder_date,
-                            'orderMerchantLogo' => $this->getImageUrl($s->store->merchant_logo, 'full'),
+                            'orderMerchantLogo' => $this->getattachmentUrl($s->store->merchant_logo, 'full'),
                             'orderAmount' => $s->order_amount,
                             'orderCommission' => $s->order_commission,
                             'orderApprovalDate' => $s->order_approval_date
@@ -185,5 +189,88 @@ class DashboardController extends Controller
         Usermeta::updateOrCreate(['user_id' => auth()->user()->ID], $usermeta);
 
         return redirect('dashboard/profile');
+    }
+
+    public function tickets()
+    {
+        $this->data['tickets'] = $this->getTickets();
+        return view('dashboard.tickets')->with('data', $this->data);
+    }
+
+    protected function getTickets()
+    {
+        $tickets = array();
+        $set = auth()->user()->supportticket()->get();
+        if (!$set->isEmpty()) {
+            foreach ($set as $s) {
+                switch ($s->status) {
+                    case 'Unsolved' :
+                        $tickets['unsolved'][] = array(
+                            'ticketID' => $s->id,
+                            'ticketToken' => $s->token_no,
+                            'ticketDate' => $s->date_time,
+                        );
+                        break;
+                    case 'Solved':
+                        $tickets['solved'][] = array(
+                            'ticketID' => $s->id,
+                            'ticketToken' => $s->token_no,
+                            'ticketDate' => $s->date_time,
+                        );
+                        break;
+                }
+            }
+            return $tickets;
+        }
+        return FALSE;
+    }
+
+    public function addTicket()
+    {
+        $this->data['ticketIssueType'] = SupportIssue::all();
+        return view('dashboard.ticket')->with('data', $this->data);
+    }
+
+    public function saveTicket(Request $request)
+    {
+        $this->validate($request, [
+            'issue_type' => 'required',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+        $issue = SupportIssue::where(['id' => $request->issue_type])->first();
+        $ticket = new \App\SupportTicket;
+        $ticket->user_id = auth()->user()->ID;
+        $ticket->token_no = $issue->supportdept->ticket_id_referance . Carbon::now()->timestamp;
+        $ticket->issue_type_id = $request->issue_type;
+        $ticket->department_id = $issue->supportdept->id;
+        $ticket->reference_id_if_any = $request->ref_id;
+        $ticket->subject = $request->subject;
+        $ticket->status = 'Unsolved';
+        $ticket->date_time = Carbon::now();
+        $ticket->message = $request->message;
+
+        if ($request->hasFile('attachment')) {
+            // checking file is valid.
+            if ($request->file('attachment')->isValid()) {
+                $destinationPath = config('constants.IMAGE_UPLOAD_URL'); // upload path
+                $extension = $request->file('attachment')->getClientOriginalExtension(); // getting attachment extension
+                $fileName = rand(11111, 99999) . '.' . $extension; // renameing attachment
+                $request->file('attachment')->move($destinationPath, $fileName); // uploading file to given path
+                // sending back with message
+                $ticket->attachment = $fileName;
+
+            } else {
+                // sending back with error message.
+                Session::flash('error', 'uploaded file is not valid');
+                return redirect(url('dashboard/ticket/add'));
+            }
+        }
+        if($ticket->save()){
+            Session::flash('success', 'Your ticket was successfully created');
+        }else{
+            Session::flash('error', 'We were unable to create your ticket. Please try again');
+        }
+        return redirect(url('dashboard/ticket/add'));
     }
 }
