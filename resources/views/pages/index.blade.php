@@ -7,7 +7,7 @@
                 <div class="center-block plaunch">
                     <h3><i class="fa fa-arrow-circle-right"></i> Latest product launch</h3>
                     <img src="{{asset('assets/images/021317-jcpv2-quad.jpg')}}" alt=""/></div>
-                @if(isset($data['featuredStore']))
+                @if($data['featuredStore'])
                     <ul class="list-inline fmerchants">
                         @foreach($data['featuredStore'] as $store)
                             <li>
@@ -33,7 +33,7 @@
                         @endif
                     </div>
                     <div class="carousel-tabs hidden-xs">
-                        @if(isset($data['slider']))
+                        @if($data['slider'])
                             @foreach($data['slider'] as $slider)
                                 <a tab href="#{{$slider['sliderID']}}" class="col-sm-3 active">
                                     <h4>{{$slider['sliderTitle']}}</h4>
@@ -91,7 +91,15 @@
                             <div class="cboxsq-head">30 Uses Today</div>
                             <div class="clearfix"></div>
                             <h3>{{ $coupon['couponTitle'] }}</h3>
-                            <a href="#" class="btn btn-primary getO hvr-bounce-to-right">Get
+                            <a id="{{ $coupon['couponUID'] }}"
+                               href="javascript:void(0)"
+                               class="btn btn-primary getO hvr-bounce-to-right xy-cpn-get"
+                               data-title="{{ $coupon['couponTitle'] }}"
+                               data-cpnid="{{ $coupon['couponID'] }}"
+                               data-type="{{ $coupon['couponType'] }}"
+                               data-cpn-merchant="{{ $coupon['couponMerchantID'] }}"
+                               data-cpn-expire="{{ $coupon['couponExpire'] }}"
+                               data-user-type="{{ Auth::guest() ? "nl" : "l" }}">Get
                                 @if($coupon['couponType'] == 'Coupon')
                                     Coupon
                                 @else
@@ -131,7 +139,7 @@
     <section>
         <div class="container">
             <div class="col-md-12">
-                @if(isset($data['popularCategory']))
+                @if($data['popularCategory'])
                     <h2 class="separator-header"><span>Select Your Product Category Wise</span></h2>
                     <div class="great-codes">
                         @foreach($data['popularCategory'] as $category)
@@ -143,7 +151,7 @@
                             </div>
                         @endforeach
                     </div>
-                @endif
+            @endif
             <!-- // great-deals   -->
             </div>
         </div>

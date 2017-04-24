@@ -200,7 +200,15 @@
                                 </div>
                                 <div class="offr-lnks">
                                     <div class="nwcid-btn">
-                                        <a href="#" class="hvr-bounce-to-right">
+                                        <a id="{{ $coupon['couponUID'] }}"
+                                           href="javascript:void(0)"
+                                           class="hvr-bounce-to-right xy-cpn-get"
+                                           data-title="{{ $coupon['couponTitle'] }}"
+                                           data-cpnid="{{ $coupon['couponID'] }}"
+                                           data-type="{{ $coupon['couponType'] }}"
+                                           data-cpn-merchant="{{ $coupon['couponMerchantID'] }}"
+                                           data-cpn-expire="{{ $coupon['couponExpire'] }}"
+                                           data-user-type="{{ Auth::guest() ? "nl" : "l" }}">
                                             @if($coupon['couponType'] == 'Coupon')
                                                 Get Coupon
                                             @else
@@ -215,7 +223,7 @@
                                                 <label>Offer used 14 mints ago</label>
                                             </li>
                                             <li><i class="fa fa-clock-o"></i> Valid
-                                                till {{ $coupon['couponExpiryDate'] }}</li>
+                                                till {{ $coupon['couponExpire'] }}</li>
                                         </ul>
                                     </div>
                                 </div>

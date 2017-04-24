@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <a class="btn btn-primary">Redeem Now</a>
+                                <a href="{{ url('dashboard/recharge') }}" class="btn btn-primary">Redeem Now</a>
                             </div>
                         </div>
                     </div>

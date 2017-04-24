@@ -39,3 +39,5 @@ Route::get('/dashboard/voucher/history', 'RedeemController@voucherHistory');
 Route::get('/dashboard/bank-transfer', 'RedeemController@initBankTransfer');
 Route::post('/dashboard/bank-transfer/add', 'RedeemController@bankTransferAdd');
 Route::get('/dashboard/bank-transfer/history', 'RedeemController@bankTransferHistory');
+Route::get('/dashboard/recharge', 'RedeemController@initRecharge');
+Route::post('/dashboard/do-recharge', 'RedeemController@doRecharge');

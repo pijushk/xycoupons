@@ -236,3 +236,25 @@ $('body').on('click', '.login-user-button', function (e) {
         }
     });
 });
+$(document).on('click', '.xy-cpn-get', function (e) {
+   e.preventDefault();
+    var a = $(this).data('title'),
+        b = $(this).data('cpn-expire'),
+        c = $(this).data('cpnid'),
+        d = $(this).data('type'),
+        e = $(this).data('cpn-merchant'),
+        f = $(this).data('user-type');
+    if(f === "nl"){
+        $('#couponModalLabel').html(a);
+        if(typeof b != 'undefined'){
+            $('#cpn-expire').html("Offer ends "+b+" @<strong>xycoupons.com</strong>");
+        }
+        $('#couponModal').modal('show');
+    }else{
+
+    }
+});
+$("body").on('click', '.psl-b > p', function (e) {
+    e.preventDefault();
+    window.location.href = $(this).parent().find('a').attr('href');
+});

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -58,13 +59,15 @@ class CategoryController extends Controller
         if ($coupon->count() > 0) {
             foreach ($coupon->get() as $c) {
                 $couponData['coupon'][] = array(
+                    'couponUID' => uniqid('xy_'),
                     'couponID' => $c->ID,
                     'couponTitle' => $c->coupon_title,
                     'couponDesc' => $c->coupon_description,
                     'couponType' => $c->coupon_type,
-                    'couponExpiryDate' => $c->coupon_end_date,
+                    'couponExpire' => Carbon::parse($c->coupon_end_date)->format('d/m/Y'),
                     'couponCode' => $c->coupon_code,
-                    'couponMerchantLogo' => $this->getImageUrl($c->store->merchant_logo, 'full')
+                    'couponMerchantLogo' => $this->getImageUrl($c->store->merchant_logo, 'full'),
+                    'couponMerchantID' => $c->store->ID
                 );
                 if ($c->coupon_type == 'Coupon') {
                     $cpn++;

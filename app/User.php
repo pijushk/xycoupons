@@ -217,4 +217,8 @@ class User extends Authenticatable
     public function banktransfer(){
         return $this->hasMany('App\bankTransfer', 'user_id', 'ID');
     }
+
+    public function rechargehistory(){
+        return $this->hasMany('App\RechargeHistory', 'user_id', 'ID');
+    }
 }

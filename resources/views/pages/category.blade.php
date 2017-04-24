@@ -115,7 +115,7 @@
                                  data-category="968">
                                 <div class="media-left media-middle"><img
                                             src="https://admin.couponclue.com/ins-upload/full/1484567625_7394650.png"
-                                            alt="shopclues" ></div>
+                                            alt="shopclues"></div>
                                 <div class="media-body">
                                     <h4 class="media-heading">Save Up To 40% On Laptops</h4>
                                 </div>
@@ -128,7 +128,7 @@
                                  data-category="966">
                                 <div class="media-left media-middle"><img
                                             src="https://admin.couponclue.com/ins-upload/full/1485154559_9281681.png"
-                                            alt="snapdeal" ></div>
+                                            alt="snapdeal"></div>
                                 <div class="media-body">
                                     <h4 class="media-heading">Snapdeal Offers Today - Get Up To 90% Off On Electronics,
                                         Mobile, Fashion &amp; More</h4>
@@ -142,7 +142,7 @@
                                  data-category="1386">
                                 <div class="media-left media-middle"><img
                                             src="https://admin.couponclue.com/ins-upload/full/1485162713_2924487.png"
-                                            alt="tata cliq" ></div>
+                                            alt="tata cliq"></div>
                                 <div class="media-body">
                                     <h4 class="media-heading">Get Up To 70% Off On Women Bra</h4>
                                 </div>
@@ -154,7 +154,7 @@
                                  data-category="1">
                                 <div class="media-left media-middle"><img
                                             src="https://admin.couponclue.com/ins-upload/full/1484560964_464047.png"
-                                            alt="amazon" ></div>
+                                            alt="amazon"></div>
                                 <div class="media-body">
                                     <h4 class="media-heading">Amazon Electronics Sale - Get Up To 55% Off</h4>
                                 </div>
@@ -165,7 +165,8 @@
                     </div>
                     <!-- //Trending Coupons  -->
 
-                    <div class="center-block"><img src="{{asset('assets/images/amazon-hpromo02122016.jpg')}}" width="100%" height="100%"
+                    <div class="center-block"><img src="{{asset('assets/images/amazon-hpromo02122016.jpg')}}"
+                                                   width="100%" height="100%"
                                                    alt=""/></div>
                     <!-- //Add Banner  -->
 
@@ -215,7 +216,15 @@
                                 </div>
                                 <div class="offr-lnks">
                                     <div class="nwcid-btn">
-                                        <a href="#" class="hvr-bounce-to-right">
+                                        <a id="{{ $coupon['couponUID'] }}"
+                                           href="javascript:void(0)"
+                                           class="hvr-bounce-to-right xy-cpn-get"
+                                           data-title="{{ $coupon['couponTitle'] }}"
+                                           data-cpnid="{{ $coupon['couponID'] }}"
+                                           data-type="{{ $coupon['couponType'] }}"
+                                           data-cpn-merchant="{{ $coupon['couponMerchantID'] }}"
+                                           data-cpn-expire="{{ $coupon['couponExpire'] }}"
+                                           data-user-type="{{ Auth::guest() ? "nl" : "l" }}">
                                             @if($coupon['couponType'] == 'Coupon')
                                                 Get Coupon
                                             @else
@@ -230,7 +239,7 @@
                                                 <label>Offer used 14 mints ago</label>
                                             </li>
                                             <li><i class="fa fa-clock-o"></i> Valid
-                                                till {{ $coupon['couponExpiryDate'] }}</li>
+                                                till {{ $coupon['couponExpire'] }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -256,7 +265,8 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 3 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/1168.jpg')}}" width="200"
+                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/1168.jpg')}}"
+                                                                width="200"
                                                                 height="100" alt=""/></div>
                                     <h4>Flat 40% Off on First Order + Extra 15% MobiKwik Cashback</h4>
                                     <h5><i class="fa fa-user"></i>542 Uses Today</h5>
@@ -266,8 +276,10 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 4 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/Abof-Logo-110x50.png')}}" width="110"
-                                                                height="50" alt=""/></div>
+                                    <div class="thumbnail"><img
+                                                src="{{asset('assets/images/logo-stroe/Abof-Logo-110x50.png')}}"
+                                                width="110"
+                                                height="50" alt=""/></div>
                                     <h4>Flat Rs.300 Extra Off On Rs.1195 & Above – On First Purchase Only</h4>
                                     <h5><i class="fa fa-user"></i>42 Uses Today</h5>
                                 </div>
@@ -276,7 +288,8 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 3 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/45.jpg')}}" width="200" height="100"
+                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/45.jpg')}}"
+                                                                width="200" height="100"
                                                                 alt=""/></div>
                                     <h4>Electronics Sale – Upto 60% Off On Wide Of Electronic Products</h4>
                                     <h5><i class="fa fa-user"></i>12 Uses Today</h5>
@@ -286,8 +299,9 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 33 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/amazon-coupons-110x50.jpg')}}"
-                                                                width="110" height="50" alt=""/></div>
+                                    <div class="thumbnail"><img
+                                                src="{{asset('assets/images/logo-stroe/amazon-coupons-110x50.jpg')}}"
+                                                width="110" height="50" alt=""/></div>
                                     <h4>Big Fashion Sale – Minimum 50% To 70% Off On Footwear, Clothing &
                                         Accessories</h4>
                                     <h5><i class="fa fa-user"></i>142 Uses Today</h5>
@@ -297,8 +311,9 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 23 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/ebay.com_coupons_promo_codes.jpg')}}"
-                                                                width="114" height="114" alt=""/></div>
+                                    <div class="thumbnail"><img
+                                                src="{{asset('assets/images/logo-stroe/ebay.com_coupons_promo_codes.jpg')}}"
+                                                width="114" height="114" alt=""/></div>
                                     <h4>Flat 7% Off Across The Site – No Minimum Purchase</h4>
                                     <h5><i class="fa fa-user"></i>242 Uses Today</h5>
                                 </div>
@@ -307,8 +322,9 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 2 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/jabong-coupons_logo_4.png')}}"
-                                                                width="148" height="111" alt=""/></div>
+                                    <div class="thumbnail"><img
+                                                src="{{asset('assets/images/logo-stroe/jabong-coupons_logo_4.png')}}"
+                                                width="148" height="111" alt=""/></div>
                                     <h4>Upto 80% + Extra 20% Off On Lifestyle Products – No Min. Purchase</h4>
                                     <h5><i class="fa fa-user"></i>2 Uses Today</h5>
                                 </div>
@@ -317,7 +333,8 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 3 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/1168.jpg')}}" width="200"
+                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/1168.jpg')}}"
+                                                                width="200"
                                                                 height="100" alt=""/></div>
                                     <h4>Flat 20% Extra Off On First Purchase – Across The Site</h4>
                                     <h5><i class="fa fa-user"></i>602 Uses Today</h5>
@@ -327,7 +344,8 @@
                             <li class="recent-offers-ctr">
                                 <div class="center-block">
                                     <h5><i class="fa fa-clock-o"></i> Used 13 mins ago</h5>
-                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/111.jpg')}}" width="200" height="100"
+                                    <div class="thumbnail"><img src="{{asset('assets/images/logo-stroe/111.jpg')}}"
+                                                                width="200" height="100"
                                                                 alt=""/></div>
                                     <h4>Flat Rs.800 Cashback On All Domestic Flights</h4>
                                     <h5><i class="fa fa-user"></i>342 Uses Today</h5>

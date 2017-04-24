@@ -342,7 +342,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary btn-block login-button text-uppercase login-user-button"
+                                <button type="button"
+                                        class="btn btn-primary btn-block login-button text-uppercase login-user-button"
                                         style="margin-bottom:4px;">Sign In Now
                                 </button>
                                 <a href="#">Forgot Your Password?</a></div>
@@ -370,6 +371,53 @@
         </div>
     </div>
 @endif
+<div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="couponModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content popWrap">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="couponModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <h6 id="cpn-expire"></h6>
+                </div>
+                <hr>
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <button type="button" class="btn btn-primary btn-block login-button text-uppercase"
+                            style="margin-bottom:4px;">Log in &amp; Get Code
+                    </button>
+                    Not registered? <a href="#">Sign Up</a>
+                </div>
+                <div class="clearfix"></div>
+                <div class="text-center center-block">
+                    <ul class="list-inline">
+                        <li><a href="#" target="_blank" class="btn-social btn-outline"><i
+                                        class="fa fa-fw fa-facebook"></i></a></li>
+                        <li><a href="#" target="_blank" class="btn-social btn-outline"><i
+                                        class="fa fa-fw fa-google-plus"></i></a>
+                        </li>
+                        <li><a href="#" target="_blank" class="btn-social btn-outline"><i
+                                        class="fa fa-fw fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <div class="well text-center">
+                    <h2>NO I don't want cashback</h2>
+                    <h4><a href="#">Continue without Cash Back</a></h4>
+                    <h6>*By joining, you agree to the Terms & Conditions and Privacy Policy. </h6>
+                </div>
+                <div class="center-block text-center"><a href="#" class="btn btn-default btn-block">View Cash Back and
+                        FSON CASHBACK
+                        Guidelines</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
 <a href="#" class="scrollToTop scrollToTop_cycle scrollToTop_show"></a>
 <!-- *** SCRIPTS TO INCLUDE *** -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

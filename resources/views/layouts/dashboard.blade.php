@@ -199,4 +199,5 @@
 
 <!-- Material Dashboard javascript methods -->
 <script src="{{asset('assets/js/material-dashboard.js')}}"></script>
+<script src="{{asset('assets/js/dboard.js')}}"></script>
 </html>

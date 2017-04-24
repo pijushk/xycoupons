@@ -29,7 +29,7 @@ class Controller extends BaseController
 
     public function getCategoryUrl($slug)
     {
-        return url($slug . '-coupons');
+        return url('category/'.$slug);
     }
 
     public function getCouponPopupURL($URL, $couponID)
